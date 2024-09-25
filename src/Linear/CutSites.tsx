@@ -162,7 +162,6 @@ const enhanceCutSites = (
   findXAndWidth: FindXAndWidthType
 ): CutSiteEnhanced[] =>
   cutSites.map((c: CutSite) => {
-    
     // Prevent double rendering of cut-site lines across SeqBlocks. Without the shenanigans below,
     // if a cut site lands on the last or first base of a SeqBlock, it will also render at the end of a SeqBlock
     // and the start of the next. Below, we only show a cut if 1. it's wholly within this SeqBlock or
@@ -206,7 +205,7 @@ const enhanceCutSites = (
         if (c.rcut > c.end) {
           enhancedCutSite = { ...enhancedCutSite, rcut: firstBase };
         }
-      }  
+      }
     }
 
     const { x: topX } = findXAndWidth(enhancedCutSite.fcut, enhancedCutSite.fcut);
@@ -218,7 +217,16 @@ const enhanceCutSites = (
         x: bottomX,
       },
       c,
-      connector: calcConnector(enhancedCutSite, topX, bottomX, firstBase, lastBase, showTopLine, showBottomLine, findXAndWidth),
+      connector: calcConnector(
+        enhancedCutSite,
+        topX,
+        bottomX,
+        firstBase,
+        lastBase,
+        showTopLine,
+        showBottomLine,
+        findXAndWidth
+      ),
       highlight: calcHighlight(enhancedCutSite, firstBase, lastBase, findXAndWidth),
       top: {
         render: showTopLine,
