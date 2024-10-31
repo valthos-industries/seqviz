@@ -424,7 +424,8 @@ export default class SeqViz extends React.Component<SeqVizProps, SeqVizState> {
     // If the seqType is aa, make the entire sequence the "translation"
     if (seqType === "aa") {
       // TODO: during some grand future refactor, make this cleaner and more transparent to the user
-      translations = [{ direction: 1, end: seq.length, start: 0, name: "translation" }];
+      // Making the name empty so the translation handle doesn't show
+      translations = [{ direction: 1, end: seq.length, start: 0, name: "" }];
     }
 
     // Since all the props are optional, we need to parse them to defaults.
