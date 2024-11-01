@@ -1,6 +1,6 @@
 {
-  "name": "seqviz",
-  "description": "A viewer for DNA, RNA, and protein sequences that supports many input formats",
+  "name": "@valthos-industries/seqviz",
+  "description": "(forked) A viewer for DNA, RNA, and protein sequences that supports many input formats",
   "version": "3.10.9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,24 +16,9 @@
     "dev": "cd demo && npm install && npm run dev",
     "test": "CI=true jest"
   },
-  "keywords": [
-    "AA",
-    "DNA",
-    "RNA",
-    "plasmid",
-    "sequence",
-    "seqviz",
-    "vector",
-    "viewer"
-  ],
-  "homepage": "https://github.com/Lattice-Automation/seqviz",
-  "bugs": {
-    "url": "https://github.com/Lattice-Automation/seqviz/issues",
-    "email": "contact@latticeautomation.com"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lattice-Automation/seqviz.git"
+    "url": "https://github.com/valthos-industries/seqviz.git"
   },
   "license": "MIT",
   "author": "Lattice Automation (https://latticeautomation.com/)",
@@ -90,5 +75,8 @@
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
