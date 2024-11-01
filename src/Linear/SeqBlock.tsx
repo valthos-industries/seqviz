@@ -220,6 +220,7 @@ export class SeqBlock extends React.PureComponent<SeqBlockProps> {
       annotationRows,
       blockHeight,
       bpsPerBlock,
+      bpColors,
       charWidth,
       compSeq,
       cutSiteRows,
@@ -426,6 +427,7 @@ export class SeqBlock extends React.PureComponent<SeqBlockProps> {
         {translationRows.length && (
           <TranslationRows
             bpsPerBlock={bpsPerBlock}
+            bpColors={bpColors}
             charWidth={charWidth}
             elementHeight={elementHeight}
             findXAndWidth={this.findXAndWidth}

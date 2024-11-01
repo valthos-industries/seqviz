@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { InputRefFunc } from "../SelectionHandler";
-import { borderColorByIndex, colorByIndex } from "../colors";
+//import { borderColorByIndex } from "../colors";
 import { NameRange, SeqType, Translation } from "../elements";
 import { randomID } from "../sequence";
 import { translationAminoAcidLabel, translationHandle, translationHandleLabel } from "../style";
@@ -17,6 +17,7 @@ const hoverOtherTranshlationHandleRows = (className: string, opacity: number) =>
 
 interface TranslationRowsProps {
   bpsPerBlock: number;
+  bpColors?: { [key: number | string]: string };
   charWidth: number;
   elementHeight: number;
   findXAndWidth: FindXAndWidthType;
@@ -34,6 +35,7 @@ interface TranslationRowsProps {
 /** Rows of translations */
 export const TranslationRows = ({
   bpsPerBlock,
+  bpColors,
   charWidth,
   elementHeight,
   findXAndWidth,
@@ -59,6 +61,7 @@ export const TranslationRows = ({
         <TranslationRow
           key={`i-${firstBase}`}
           bpsPerBlock={bpsPerBlock}
+          bpColors={bpColors}
           charWidth={charWidth}
           elementHeight={elementHeight}
           findXAndWidth={findXAndWidth}
@@ -84,6 +87,7 @@ export const TranslationRows = ({
  */
 const TranslationRow = (props: {
   bpsPerBlock: number;
+  bpColors?: { [key: number | string]: string };
   charWidth: number;
   elementHeight: number;
   findXAndWidth: FindXAndWidthType;
@@ -103,6 +107,7 @@ const TranslationRow = (props: {
       <>
         <SingleNamedElementAminoacids
           {...props}
+          bpColors={props.bpColors}
           key={`translation-linear-${t.id}-${i}-${props.firstBase}-${props.lastBase}`}
           translation={t}
         />
@@ -122,6 +127,7 @@ const TranslationRow = (props: {
 
 interface SingleNamedElementAminoacidsProps {
   bpsPerBlock: number;
+  bpColors?: { [key: number | string]: string };
   charWidth: number;
   findXAndWidth: FindXAndWidthType;
   firstBase: number;
@@ -169,6 +175,7 @@ class SingleNamedElementAminoacids extends React.PureComponent<SingleNamedElemen
   render() {
     const {
       bpsPerBlock,
+      bpColors,
       charWidth,
       findXAndWidth,
       firstBase,
@@ -255,6 +262,8 @@ class SingleNamedElementAminoacids extends React.PureComponent<SingleNamedElemen
           // arrow are facing
           const path = this.genPath(bpCount, direction === 1 ? 1 : -1);
 
+          const color = bpColors ? bpColors[i] : "#ffffff00";
+
           return (
             <g
               key={aaId}
@@ -270,10 +279,10 @@ class SingleNamedElementAminoacids extends React.PureComponent<SingleNamedElemen
             >
               <path
                 d={path}
-                fill={colorByIndex(a.charCodeAt(0))}
+                fill={color}
                 id={aaId}
                 shapeRendering="geometricPrecision"
-                stroke={borderColorByIndex(a.charCodeAt(0))}
+                stroke={color}
                 style={{
                   cursor: "pointer",
                   opacity: 0.7,
