@@ -16,8 +16,8 @@ const hoverOtherTranshlationHandleRows = (className: string, opacity: number) =>
 };
 
 interface TranslationRowsProps {
-  bpsPerBlock: number;
   bpColors?: { [key: number | string]: string };
+  bpsPerBlock: number;
   charWidth: number;
   elementHeight: number;
   findXAndWidth: FindXAndWidthType;
@@ -34,8 +34,8 @@ interface TranslationRowsProps {
 
 /** Rows of translations */
 export const TranslationRows = ({
-  bpsPerBlock,
   bpColors,
+  bpsPerBlock,
   charWidth,
   elementHeight,
   findXAndWidth,
@@ -60,8 +60,8 @@ export const TranslationRows = ({
       return (
         <TranslationRow
           key={`i-${firstBase}`}
-          bpsPerBlock={bpsPerBlock}
           bpColors={bpColors}
+          bpsPerBlock={bpsPerBlock}
           charWidth={charWidth}
           elementHeight={elementHeight}
           findXAndWidth={findXAndWidth}
@@ -86,8 +86,8 @@ export const TranslationRows = ({
  * vertically stacked on top of one another in non-overlapping arrays.
  */
 const TranslationRow = (props: {
-  bpsPerBlock: number;
   bpColors?: { [key: number | string]: string };
+  bpsPerBlock: number;
   charWidth: number;
   elementHeight: number;
   findXAndWidth: FindXAndWidthType;
@@ -107,8 +107,8 @@ const TranslationRow = (props: {
       <>
         <SingleNamedElementAminoacids
           {...props}
-          bpColors={props.bpColors}
           key={`translation-linear-${t.id}-${i}-${props.firstBase}-${props.lastBase}`}
+          bpColors={props.bpColors}
           translation={t}
         />
         {t.name && (
@@ -126,8 +126,8 @@ const TranslationRow = (props: {
 );
 
 interface SingleNamedElementAminoacidsProps {
-  bpsPerBlock: number;
   bpColors?: { [key: number | string]: string };
+  bpsPerBlock: number;
   charWidth: number;
   findXAndWidth: FindXAndWidthType;
   firstBase: number;
@@ -174,8 +174,8 @@ class SingleNamedElementAminoacids extends React.PureComponent<SingleNamedElemen
 
   render() {
     const {
-      bpsPerBlock,
       bpColors,
+      bpsPerBlock,
       charWidth,
       findXAndWidth,
       firstBase,
